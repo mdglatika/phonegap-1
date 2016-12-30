@@ -49,8 +49,7 @@
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
-		
-		<div id="geolocation">asdf </div>
+		<button onclick="myFunction()">Splashdddd</button>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
@@ -60,26 +59,10 @@
     //   This method accepts a `Position` object, which contains
     //   the current GPS coordinates
     //
-    function onSuccess(position) {
-        var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
-		alert('Latitude: '  + position.coords.latitude + '<br />' + 'Longitude: ' + position.coords.longitude + '<br />' );
-    }
+	function myFunction(){
+		navigator.splashscreen.show();
 
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
-
-    // Options: throw an error if no update is received every 30 seconds.
-    //
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
-	
-		alert("watchID:"+watchID);
+	}
     </script>
 </body>
 
