@@ -56,10 +56,21 @@
     <script type="text/javascript">
         app.initialize();
 	    
+	function onSuccess(result){
+	  alert("Success:"+result);
+}
+ 
+function onError(result) {
+  alert("Error:"+result);
+}
+
 	function myFunction(){
 		alert("myfuncttt");
-		document.location.href = 'tel:+541144660627';
+		var number = "+541144660627";
+		var bypassAppChooser = true;//si tiene dos sims
+		window.plugins.CallNumber.callNumber(onSuccess, onError, number, bypassAppChooser);
 
+		
 		//navigator.splashscreen.show();
 
 	}
