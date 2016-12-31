@@ -38,7 +38,7 @@
     <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
 	
-    <plugin name="cordova-plugin-call-number" source="npm" spec="https://github.com/Rohfosho/CordovaCallNumberPlugin.git" />
+    <plugin name="phonegap-plugin-barcodescanner" source="npm" spec="https://github.com/phonegap/phonegap-plugin-barcodescanner.git" />
 	
 	
     <platform name="android">
