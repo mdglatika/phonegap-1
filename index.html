@@ -49,17 +49,15 @@
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
-		<button onclick="myFunction()">Splashdddd</button>
+		<button onclick="myFunction();">Splashdddd</button>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
-		// onSuccess Callback
-    //   This method accepts a `Position` object, which contains
-    //   the current GPS coordinates
-    //
+	    
 	function myFunction(){
+		alert("myfuncttt");
 		navigator.splashscreen.show();
 
 	}
