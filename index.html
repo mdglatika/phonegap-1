@@ -19,7 +19,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html>
+<html ng-app="myApp">
 
 <head>
     <meta charset="utf-8" />
@@ -42,27 +42,33 @@
     <title>Hello World</title>
 </head>
 
-<body>
+<body >
     <div class="app">
         <h1>PhoneGap</h1>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
         </div>
-		<button onclick="myFunction()">Splashdddd</button>
     </div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	
+	<script src="js/myApp.js"></script>	
+	<script src="js/controller.js"></script>
+
+
+	<div ng-controller="controller">
+		<p><button class="myButton" ng-click="alertDeviceInfo()">Device</button></p>
+		<p><button class="myButton" ng-click="alertGeoLocation()">Location</button></p>
+		<p><button class="myButton" ng-click="beepNotify()">Beep</button></p>
+		<p><button class="myButton" ng-click="vibrateNotify()">Vibrate</button></p>
+		
+	</div>
+	
     <script type="text/javascript">
         app.initialize();
-		// onSuccess Callback
-    //   This method accepts a `Position` object, which contains
-    //   the current GPS coordinates
-    //
-	function myFunction(){
-		navigator.splashscreen.show();
-
-	}
     </script>
 </body>
 
