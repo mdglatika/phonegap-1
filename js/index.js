@@ -39,11 +39,17 @@ var app = {
                 
         
         function successCallback(result) {
-          alert(result);
+          //alert(result);
+            for(var key in result) {
+			    alert('----key: ' + key + '\n' + '----value: ' + result[key]);
+			}
         }
 
         function errorCallback(error) {
-          alert(error);
+          //alert(error);
+            for(var key in error) {
+			    alert('----key: ' + key + '\n' + '----value: ' + error[key]);
+			}
         }
 
         // Android only: check permission
