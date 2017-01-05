@@ -1,0 +1,18 @@
+
+
+div.spinner {
+    margin: auto;
+  position: absolute;
+  //top: 0; left: 0; bottom: 0; right: 0;  
+
+  text-align: center;
+    
+
+}
+.spinner svg {
+  width: 100px !important;;
+  height: 100px !important;;
+  stroke: #444;
+  fill: #444;
+    width: 200px;
+}
