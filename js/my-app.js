@@ -27,10 +27,10 @@ myApp.onPageInit('about', function (page) {
     //   the current GPS coordinates
     //
     function onSuccess(position) {
-        var element = document.getElementById('geolocation');
+        /*var element = document.getElementById('geolocation');
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
+                            '<hr />'      + element.innerHTML;*/
 		alert('Latitude: '  + position.coords.latitude + '<br />' + 'Longitude: ' + position.coords.longitude + '<br />' );
     }
 
