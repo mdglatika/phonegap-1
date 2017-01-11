@@ -46,27 +46,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       params: {'lat': null, 'lng': null, 'descripcion':null}
     },  {reload: true})
 
-    .state('lugar-mapa', {
-      url: '/lugar-mapa?lat=:&lng=:&descripcion=:', 
-      templateUrl: 'templates/lugar-mapa.html', 
-      controller: 'LugarMapaCtrl', 
-      params: {'lat': null, 'lng': null, 'descripcion':null}
-    },  {reload: true})
-
-
-    .state('home', {
-      url: '/home', 
-      templateUrl: 'templates/home.html', 
-      controller: 'HomeCtrl'
-    })
-
-
-    .state('lugares', {
-      url: '/lugares?lat=:&lng=:', 
-      templateUrl: 'templates/lugares.html', 
-      controller: 'LugaresCtrl', 
-      params: {'lat': null, 'lng': null}
-    })
 
 
   // setup an abstract state for the tabs directive
@@ -76,7 +55,56 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     templateUrl: 'templates/tabs.html'
   })
 
+
+/*    .state('lugar-mapa', {
+      url: '/lugar-mapa?lat=:&lng=:&descripcion=:', 
+      templateUrl: 'templates/lugar-mapa.html', 
+      controller: 'LugarMapaCtrl', 
+      params: {'lat': null, 'lng': null, 'descripcion':null}
+    },  {reload: true})
+    */
+
+
+
+  .state('tab.fichada-lugares-mapa', {
+    cache: false, 
+    url: '/lugar-mapa?lat=:&lng=:&descripcion=:', 
+    params: {'lat': null, 'lng': null, 'descripcion':null},     
+    views: {
+      'tab-fichada': {
+        templateUrl: 'templates/lugar-mapa.html', 
+        controller: 'LugarMapaCtrl'        
+      }
+    }
+  }, {reload: true})
+
+
+
+
   // Each tab has its own nav history stack:
+
+  .state('tab.fichada', {
+    url: '/fichada',
+    views: {
+      'tab-fichada': {
+        templateUrl: 'templates/tab-fichada.html',
+        controller: 'FichadaCtrl'
+      }
+    }
+  })
+
+
+  .state('tab.fichada-lugares', {
+    url: '/lugares?lat=:&lng=:', 
+    params: {'lat': null, 'lng': null}, 
+    views: {
+      'tab-fichada': {
+        templateUrl: 'templates/fichada-lugares.html', 
+        controller: 'LugaresCtrl'        
+      }
+    }
+  })
+
 
   .state('tab.dash', {
     url: '/dash',

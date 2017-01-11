@@ -20,14 +20,14 @@ angular.module('starter.controllers', [])
     $scope.descripcion = $stateParams.descripcion;
   }
 
-*/
+  */
   $scope.cargar = function(){
     $scope.latitud = $stateParams.lat;
     $scope.longitud = $stateParams.lng;
     $scope.descripcion = $stateParams.descripcion;
 
     var latLng = new google.maps.LatLng($scope.latitud, $scope.longitud);
-   
+
     var mapOptions = {
       center: latLng,
       zoom: 15,
@@ -39,19 +39,19 @@ angular.module('starter.controllers', [])
 
     //Wait until the map is loaded
     google.maps.event.addListenerOnce(map, 'idle', function(){
-       
+
       var marker = new google.maps.Marker({
-          map: map,
-          animation: google.maps.Animation.DROP,
-          position: latLng
+        map: map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
       });      
-     
+
       var infoWindow = new google.maps.InfoWindow({
-          content: $scope.descripcion
+        content: $scope.descripcion
       });
-     
+
       google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.open(map, marker);
+        infoWindow.open(map, marker);
       });
     });
 
@@ -68,11 +68,11 @@ angular.module('starter.controllers', [])
   //Iteva> -34.5112987,-58.5222914
   //SRP: -34.522950, -58.523104
   $scope.lugares =   [
-    {id:1, nombre:"Viamonte", direccion:'Viamonte 749 Piso 19 Of4', lat:-34.599953, lng: -58.377418}, 
-    {id:2, nombre:"Amasol", direccion:'Tucuman 540', lat: -34.6011346, lng:-58.376141}, 
-    {id:3, nombre:"ITEVA Debenedetti", direccion:'Debenedetti 3895', lat: -34.5112987, lng: -58.5222914}, 
-    {id:4, nombre:"Santa Rosa Plasticos", direccion:'Maq. Carregal 3151 - Munro', lat: -34.522950, lng: -58.523104}
-    ];
+  {id:1, nombre:"Viamonte", direccion:'Viamonte 749 Piso 19 Of4', lat:-34.599953, lng: -58.377418}, 
+  {id:2, nombre:"Amasol", direccion:'Tucuman 540', lat: -34.6011346, lng:-58.376141}, 
+  {id:3, nombre:"ITEVA Debenedetti", direccion:'Debenedetti 3895', lat: -34.5112987, lng: -58.5222914}, 
+  {id:4, nombre:"Santa Rosa Plasticos", direccion:'Maq. Carregal 3151 - Munro', lat: -34.522950, lng: -58.523104}
+  ];
   $scope.latitud = $stateParams.lat;
   $scope.longitud = $stateParams.lng;
 
@@ -80,29 +80,41 @@ angular.module('starter.controllers', [])
     $state.go('lugar-edit', { 'lat': lugar.lat, 'lng': lugar.lng, 'descripcion':lugar.descripcion });
   }
   $scope.mostrar_mapa = function(lugar){    
-    $state.go('lugar-mapa', { 'lat': lugar.lat, 'lng': lugar.lng, 'descripcion': lugar.descripcion });
+    $state.go('tab.fichada-lugares-mapa', { 'lat': lugar.lat, 'lng': lugar.lng, 'descripcion': lugar.descripcion });
   };
 
   $scope.fichar = function(id){
     $ionicPopup.alert({
       title: "Fichar", 
       template: "Guardado el fichado para " + $filter("filter")($scope.lugares, {id:id})[0].nombre
-      });
+    });
 
-    console.log($filter("filter")($scope.lugares, {id:id}));
-    $state.go('home');
+    //console.log($filter("filter")($scope.lugares, {id:id}));
+    $state.go('tab.fichada');
   };
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicPopup, $timeout, $cordovaGeolocation, $state){
+.controller('FichadaCtrl', function($scope, $ionicPopup, $timeout, $cordovaGeolocation, $state, $ionicLoading){
+
+
+  // Setup the loader
+  $ionicLoading.show({
+    content: 'Buscando',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
 
   $scope.data1={lat: -34.7054123, lng: -58.5999008};
   $scope.data2={lat: -34.7054123, lng: -58.5999008};
   
 
   $scope.buscando = false;
+  $ionicLoading.hide();
   $scope.buscar_posicion = function(){
+      $ionicLoading.show();
 
   /////////////////////////////////////////////////
   $scope.buscando = true;
@@ -113,8 +125,8 @@ angular.module('starter.controllers', [])
     var dLat = (lat2-lat1).toRad();  // Javascript functions in radians
     var dLon = (lon2-lon1).toRad(); 
     var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
-            Math.sin(dLon/2) * Math.sin(dLon/2); 
+    Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2); 
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     var d = R * c; // Distance in km
     return d;
@@ -127,42 +139,44 @@ angular.module('starter.controllers', [])
     }
   }
 
-$timeout(function() {      
-  var posOptions = {timeout: 10000, enableHighAccuracy: false};
-  $cordovaGeolocation
-  .getCurrentPosition(posOptions)
-  .then(function (position) {
-    var lat  = position.coords.latitude;
-    var lng = position.coords.longitude;
+  $timeout(function() {      
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    $cordovaGeolocation
+    .getCurrentPosition(posOptions)
+    .then(function (position) {
+      var lat  = position.coords.latitude;
+      var lng = position.coords.longitude;
 
-    $scope.location = {lat: position.coords.latitude, lng: position.coords.longitude };
-    $scope.buscando = false;
+      $scope.location = {lat: position.coords.latitude, lng: position.coords.longitude };
+      $scope.buscando = false;
+      $ionicLoading.hide();
 
     //alert("lat:"+lat + " lng:"+long);
     //marconi y ruta 3
     //alert("dist: "+distance(long, lat, $scope.data.lng, $scope.data.lat));
-    $state.go('lugares', { 'lat': lat, 'lng': lng });
+    $state.go('tab.fichada-lugares', { 'lat': lat, 'lng': lng });
 
- 
+
   }, function(err) {
     //alert("err:"+err);
     console.log(err);
     $scope.buscando = false;
+    $ionicLoading.hide();
     /*for(var key in err) {
       alert('----key: ' + key + '\n' + '----value: ' + err[key]);
     }*/
     var dist;
     dist=distance(
-                  parseFloat($scope.data1.lng), 
-                  parseFloat($scope.data1.lat), 
-                  parseFloat($scope.data2.lng), 
-                  parseFloat($scope.data2.lat));
+      parseFloat($scope.data1.lng), 
+      parseFloat($scope.data1.lat), 
+      parseFloat($scope.data2.lng), 
+      parseFloat($scope.data2.lat));
     alert("Error "+"\n" + 
       "lng1:"+$scope.data1.lng + ",lat1:"+$scope.data1.lat +"\n"+
       "lng2:"+$scope.data2.lng + ",lat2:"+$scope.data2.lat +"\n"+      
       "dist: " +dist);
     //$state.go('lugares/lat='+$scope.data1.lat + '&lng='+$scope.data1.lng);
-    $state.go('lugares', { 'lat': $scope.data1.lat, 'lng': $scope.data1.lng });
+    $state.go('tab.fichada-lugares', { 'lat': $scope.data1.lat, 'lng': $scope.data1.lng });
 
 
 
@@ -201,7 +215,7 @@ $timeout(function() {
             title: "Login ok", 
             template: "bien chamaco"
           });*/
-          $state.go('home');
+          $state.go('tab.fichada');
 
         }
         else

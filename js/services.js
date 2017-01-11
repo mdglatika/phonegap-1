@@ -1,8 +1,8 @@
 angular.module('starter.services', [])
 
 .factory('loginService', function(){
-    var login_ok = "mds";
-    var pass_ok = "mds";
+    var login_ok = "a";
+    var pass_ok = "a";
     return {
         validar: function(user){
             return user.username == login_ok || user.password == pass_ok;
