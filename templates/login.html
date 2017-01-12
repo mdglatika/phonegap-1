@@ -16,6 +16,6 @@
               <input type="password" placeholder="Password" ng-model="data.password">
           </label>          
       </div>
-      <button class="button button-block button-calm" ng-click="login()">Login</button>
+      <button ng-disabled="!data.username || !data.password"  class="button button-block button-calm" ng-click="login()">Login</button>
   </ion-content>
 </ion-view>
