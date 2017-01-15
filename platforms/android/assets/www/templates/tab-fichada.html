@@ -1,0 +1,32 @@
+	<ion-view view-title="Fichada" name="tab-fichada" hide-back-button="true">
+
+		<ion-content class="padding">
+		<div class="text-center icono-posicion" ng-click="buscar_posicion()">
+			<i class="icon ion-ios-location" ng-show="!buscando"></i>
+			<ion-spinner icon="ripple" class="spinner-assertive icono-posicion" ng-show="buscando"></ion-spinner>
+		</div>
+
+
+
+		<div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Latitud1" ng-model="data1.lat">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="Longitud1" ng-model="data1.lng">
+          </label>
+      	</div>
+			
+		<div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="CasaLatitud2" ng-model="data2.lat">
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="CasaLongitud2" ng-model="data2.lng">
+          </label>
+      	</div>
+	</ion-content>
+		
+
+	</ion-view>
+	
