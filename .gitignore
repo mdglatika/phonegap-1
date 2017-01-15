@@ -3,4 +3,11 @@ temp/
 *.DS_Store
 *.log
 *.swp
-platforms/android/build/outputs/apk/
+
+
+platforms/
+plugins/
+resources/
+www/lib
+
+
