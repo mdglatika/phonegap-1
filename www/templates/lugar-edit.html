@@ -1,0 +1,15 @@
+<ion-view view-title="Lugar en mapa" name="lugar_mapa-view" >
+  <ion-content>
+
+	<h5 class="text-center" >Latitud: {{latitud}} - Longitud: {{longitud}} = {{data.direccion}}</h5>
+	<div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="Direccion" ng-model="data.direccion" value="{{data.direccion}}">
+        </label>
+        <button class="button button-block button-positive" ng-click="buscar()">Buscar</button>
+    </div>
+
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,2 @@
+angular.module('LoginModule', ['dbLoginService'])
+
