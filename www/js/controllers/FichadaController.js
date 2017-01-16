@@ -3,21 +3,11 @@ angular.module('FichadaModule')
 
 .controller('FichadaCtrl', function($scope, $ionicPopup, $timeout, $cordovaGeolocation, $state, $ionicLoading){
 
-  // Setup the loader
-  $ionicLoading.show({
-    content: 'Buscando',
-    animation: 'fade-in',
-    showBackdrop: false,
-    maxWidth: 200,
-    showDelay: 0
-  });
-
+  
   $scope.data1={lat: -34.7054123, lng: -58.5999008};
   $scope.data2={lat: -34.7054123, lng: -58.5999008};
   
-
   $scope.buscando = false;
-  $ionicLoading.hide();
   $scope.buscar_posicion = function(){
       //$ionicLoading.show();
 
@@ -54,11 +44,11 @@ angular.module('FichadaModule')
 
       $scope.location = {lat: position.coords.latitude, lng: position.coords.longitude };
       $scope.buscando = false;
-      $ionicLoading.hide();
 
     //alert("lat:"+lat + " lng:"+long);
     //marconi y ruta 3
     //alert("dist: "+distance(long, lat, $scope.data.lng, $scope.data.lat));
+    //si esta ok voy a la nueva vista
     $state.go('tab.fichada-lugares', { 'lat': lat, 'lng': lng });
 
 
@@ -66,7 +56,6 @@ angular.module('FichadaModule')
     //alert("err:"+err);
     console.log(err);
     $scope.buscando = false;
-    $ionicLoading.hide();
     /*for(var key in err) {
       alert('----key: ' + key + '\n' + '----value: ' + err[key]);
     }*/
@@ -80,11 +69,8 @@ angular.module('FichadaModule')
       "lng1:"+$scope.data1.lng + ",lat1:"+$scope.data1.lat +"\n"+
       "lng2:"+$scope.data2.lng + ",lat2:"+$scope.data2.lat +"\n"+      
       "dist: " +dist);
-    //$state.go('lugares/lat='+$scope.data1.lat + '&lng='+$scope.data1.lng);
+    //aunque de error voy igual para desa
     $state.go('tab.fichada-lugares', { 'lat': $scope.data1.lat, 'lng': $scope.data1.lng });
-
-
-
   });
 
 

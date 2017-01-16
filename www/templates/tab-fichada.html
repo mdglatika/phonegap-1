@@ -1,14 +1,10 @@
-	<ion-view view-title="Fichada" name="tab-fichada" hide-back-button="true">
+	<ion-view view-title="Fichada" id="tab-fichada" hide-back-button="true">
 
 		<ion-content class="padding">
 		<div class="text-center icono-posicion" ng-click="buscar_posicion()">
 			<i class="icon ion-ios-location" ng-show="!buscando"></i>
 			<ion-spinner icon="ripple" class="spinner-assertive icono-posicion" ng-show="buscando"></ion-spinner>
 		</div>
-
-    <div>
-      <div id="map" data-tap-disabled="true"></div>
-    </div>
 
 		<div class="list list-inset">
           <label class="item item-input">

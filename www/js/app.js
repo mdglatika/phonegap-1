@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'FichadaModule', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'FichadaModule', 'starter.services', 'ngCordova', 'ConfigModule'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -135,12 +135,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'Ficha
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.config', {
+    url: '/config',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-config': {
+        templateUrl: 'templates/tab-config.html',
+        controller: 'ConfigCtrl'
       }
     }
   });

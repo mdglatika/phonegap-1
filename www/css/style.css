@@ -10,7 +10,7 @@
 	font-size: 50px;
 }
 
-.spinner svg {
+#tab-fichada .spinner svg {
   width: 60% !important;
   height: 200px !important;
 }
@@ -23,4 +23,19 @@
 
 .scroll {
     height: 100%;
+}
+
+
+#login-view .spinner svg {
+  width: 100px;
+  height: 100px;
+  stroke: #444;
+  fill: #444;
+}
+
+#tab-fichada-lugares .spinner svg {
+  width: 150px;
+  height: 150px;
+  stroke: #444;
+  fill: #444;
 }

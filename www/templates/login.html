@@ -1,8 +1,7 @@
-<ion-view view-title="Login" name="login-view">
+<ion-view view-title="Login" id="login-view" ng-init="init_view()">
  
-  <ion-content class="padding">
-
-
+  <ion-content class="padding-top">
+  
       <div class="list list-inset">
           <label class="item item-input">
               <input type="text" placeholder="Url ws" ng-model="data.url_ws">
@@ -15,6 +14,10 @@
           </label>          
       </div>
       <button ng-disabled="!data.username || !data.password"  class="button button-block button-calm" ng-click="login()">Login</button>
+      <div class="text-center" >
+        <ion-spinner  icon="spiral" ng-show="try_logging" ></ion-spinner>          
+      </div>
+
   </ion-content>
 </ion-view>
 

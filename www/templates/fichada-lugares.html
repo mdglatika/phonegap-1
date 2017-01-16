@@ -1,28 +1,54 @@
-<ion-view view-title="Lugares" name="tab-fichada-lugares" ng-init="cargar_lugares()" >
-  <ion-content>
-	<h5 class="text-center">Latitud: {{latitud}} - Longitud: {{longitud}}</h5>
-	<div>
-	<div id="map" data-tap-disabled="true"></div>
-	</div>
-	
+<ion-view view-title="Lugares" id="tab-fichada-lugares" ng-init="init_view()" >
+	<ion-content>
+		<!--<h4  class="padding-top text-center">Latitud: {{latitud}} - Longitud: {{longitud}}</h4>-->
+			<div class="text-center padding-top" >
+				<ion-spinner  icon="android" ng-show="cargando" ></ion-spinner>          
+			</div>
 
-	<ion-list>
-      <ion-item ng-repeat="lugar in lugares" ng-click="fichar({{lugar.Id}})" class="item-icon-right">		
-	    <i class="icon ion-ios-arrow-right"></i>
-		  <h2>{{lugar.Nombre}}</h2>
-		  <p>{{lugar.Direccion}}</p>
+			<ion-list ng-show="!cargando">			  
+				<ion-item class="item-icon-right">		
+					<i class="icon ion-ios-arrow-right"></i>
+					<h2>Mi posicion</h2>
+					<p>Latitud: {{latitud}} - Longitud: {{longitud}}</p>
+	    		  <ion-option-button class="button button-balanced icon-left ion-map" ng-click="mostrar_mi_posicion()" > 
+					Google Maps </ion-option-button>
+
+				</ion-item>
+				<div class="item item-divider">
+				    Estoy en ...
+				</div>
+				<ion-item ng-repeat="lugar in lugares" ng-click="fichar({{lugar.Id}})" class="item-icon-right">		
+					<i class="icon ion-ios-arrow-right"></i>
+					<h2>{{lugar.Nombre}}</h2>
+					<p>{{lugar.Direccion}}</p>
+					<ion-option-button class="button button-balanced icon-left ion-map" 
+					ng-click="mostrar_mapa(lugar)" > 
+					Google Maps </ion-option-button>
+
+					<ion-option-button class="button button-assertive icon-left ion-map" 
+					ng-click="edit_mapa(lugar)" > 
+					Edit </ion-option-button>
+				</ion-item>
+
+				<div class="item item-divider">
+				    Lugares sin posicion
+				</div>
+				<ion-item ng-repeat="lugar in lugares_sin_posicion" ng-click="fichar({{lugar.Id}})" class="item-icon-right">		
+					<i class="icon ion-ios-arrow-right"></i>
+
+					<ion-option-button class="button button-balanced icon-left ion-map" 
+					ng-click="mostrar_mapa(lugar)" > 
+					Google Maps </ion-option-button>
+
+					<ion-option-button class="button button-assertive icon-left ion-map" 
+					ng-click="edit_mapa(lugar)" > 
+					Edit </ion-option-button>
+				</ion-item>
+
+			</ion-list>		
 
 
-		  <ion-option-button class="button button-balanced icon-left ion-map" 
-		  	ng-click="mostrar_mapa(lugar)" > 
-		  	Google Maps </ion-option-button>
 
-			<ion-option-button class="button button-assertive icon-left ion-map" 
-		  	ng-click="edit_mapa(lugar)" > 
-		  	Edit </ion-option-button>
-	  </ion-item>
-	</ion-list>
-
-  </ion-content>
-</ion-view>
+		</ion-content>
+	</ion-view>
 	

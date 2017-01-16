@@ -18,10 +18,8 @@ angular.module('dbLugarService', ['LugarModel'])
 		return null;
 	}
 
-	lugarService.getLugar = function(id){
-		
-		lugarService.selecionado = selectLugarById(id);
-		
+	lugarService.getLugar = function(id){		
+		lugarService.selecionado = selectLugarById(id);		
 		return lugarService.selecionado;
 	}
 
