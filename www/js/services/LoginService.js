@@ -4,6 +4,7 @@ angular.module('dbLoginService', ['LoginModel'])
 	var url = "http://200.69.217.157:20123/api/Login"
 
 	var loginService = {}
+  loginService.UserLogin = { "UserName": "", "Password": "" }
 
 	loginService.Login = function(login){
 		var deferred = $q.defer();
@@ -12,18 +13,18 @@ angular.module('dbLoginService', ['LoginModel'])
                 //window.localStorage['username'] = user.username;
                 //window.localStorage['password'] = user.password;
                 window.localStorage['user'] = angular.toJson(user);
-              }
-		
-    var Indata = { "UserName": login.UserName, "Password": login.Password };
-    $http.post( url, Indata).
+                loginService.UserLogin = user;
+              }		
+    //var Indata = { "UserName": login.UserName, "Password": login.Password };
+    $http.post( url, login).
           then(function (data, status, headers, config){
              //console.log(data);
-             //alert("POST dbLoginService OK " + data.data);
-
-             if(data.data){
-              guardar(Indata);
-             }
-             deferred.resolve(data.data);
+             //console.log(data.data);             
+            if(data.data){
+              //alert("POST dbLoginService OK " + data.data.UserName);
+              guardar(data.data);              
+            }
+            deferred.resolve(data.data);
           },
           function (data, status, headers, config) { 
             alert("post dbLoginService error") ;

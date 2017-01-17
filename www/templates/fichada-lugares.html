@@ -6,7 +6,7 @@
 			</div>
 
 			<ion-list ng-show="!cargando">			  
-				<ion-item class="item-icon-right">		
+				<ion-item class="item-icon-right" ng-click="mostrar_mi_posicion()">		
 					<i class="icon ion-ios-arrow-right"></i>
 					<h2>Mi posicion</h2>
 					<p>Latitud: {{latitud}} - Longitud: {{longitud}}</p>
@@ -21,21 +21,6 @@
 					<i class="icon ion-ios-arrow-right"></i>
 					<h2>{{lugar.Nombre}}</h2>
 					<p>{{lugar.Direccion}}</p>
-					<ion-option-button class="button button-balanced icon-left ion-map" 
-					ng-click="mostrar_mapa(lugar)" > 
-					Google Maps </ion-option-button>
-
-					<ion-option-button class="button button-assertive icon-left ion-map" 
-					ng-click="edit_mapa(lugar)" > 
-					Edit </ion-option-button>
-				</ion-item>
-
-				<div class="item item-divider">
-				    Lugares sin posicion
-				</div>
-				<ion-item ng-repeat="lugar in lugares_sin_posicion" ng-click="fichar({{lugar.Id}})" class="item-icon-right">		
-					<i class="icon ion-ios-arrow-right"></i>
-
 					<ion-option-button class="button button-balanced icon-left ion-map" 
 					ng-click="mostrar_mapa(lugar)" > 
 					Google Maps </ion-option-button>

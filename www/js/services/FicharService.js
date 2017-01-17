@@ -7,7 +7,9 @@ angular.module('dbFicharService', ['FicharModel'])
 
 	ficharService.Fichar = function(fichada){
 		var deferred = $q.defer();
-		
+		alert("fichada.Usuario:"+fichada.Usuario);
+    alert("fichada.Lugar:"+fichada.Lugar);
+    
     var Indata = { "Usuario": fichada.Usuario, "Lugar": fichada.Lugar, "Latitud": fichada.Latitud, "Longitud": fichada.Longitud };
     $http.post( url, Indata).
           then(function (data, status, headers, config){

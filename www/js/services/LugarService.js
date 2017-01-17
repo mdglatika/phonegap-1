@@ -46,8 +46,10 @@ angular.module('dbLugarService', ['LugarModel'])
 
 
 	lugarService.getLugaresCercanos = function(lat,lng){
+    //var slat, slng;
 		var deferred = $q.defer();
-		$http.get( url_lugares).
+    alert(url_lugares + '?latitud='+lat+'&longitud='+lng);
+		$http.get( url_lugares + '?latitud='+lat+'&longitud='+lng).
                   success(function (data) {
                       console.log(data);
                       //alert("getLugar  OK " + data);

@@ -1,6 +1,6 @@
 angular.module('FichadaModule')
 
-.controller('LugaresCtrl', function($scope, $filter, $ionicPopup, $state, $stateParams, LugarService, FicharService, $ionicLoading) {
+.controller('LugaresCtrl', function($scope, $filter, $ionicPopup, $state, $stateParams, LugarService, FicharService, $ionicLoading, LoginService) {
   $scope.listCanSwipe = true
   $scope.cargando = true;
 
@@ -36,11 +36,12 @@ angular.module('FichadaModule')
     //alert("init fichadalugares");
     //alert(LugarService.getLugares());
     //$scope.lugares = LugarService.getLugares();
-
-    LugarService.getLugares().then(function(){
+    //alert("Userlogin :"+LoginService.UserLogin.UserName);
+    //alert("UserloginID :"+LoginService.UserLogin.Codigo);
+    //LugarService.getLugares().then(function(){
+    LugarService.getLugaresCercanos($scope.latitud, $scope.longitud).then(function(){
           $scope.lugares = LugarService.lugares;
-          $scope.cargando = false;
-        }, 
+          $scope.cargando = false;        }, 
         function(error){
           $scope.lugares = [];
           $scope.cargando = false;
@@ -49,6 +50,7 @@ angular.module('FichadaModule')
   }
 
   $scope.fichar = function(id){
+    //alert("id:"+id);
     // Setup the loader
     $ionicLoading.show({
       content: 'Loading',
@@ -58,7 +60,7 @@ angular.module('FichadaModule')
       showDelay: 0
     });
 
-    var fichar = {Usuario: 2, Lugar: id, Latitud: $scope.latitud, Longitud: $scope.longitud};
+    var fichar = {Usuario: LoginService.UserLogin.Codigo, Lugar: id, Latitud: $scope.latitud, Longitud: $scope.longitud};
 
     FicharService.Fichar(fichar).then(function(){
       $ionicPopup.alert({
