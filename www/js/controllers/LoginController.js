@@ -1,7 +1,7 @@
 angular.module('LoginModule')
 
 
-.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http, LoginService){
+.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http, LoginService, $ionicHistory){
   $scope.data = {};
   $scope.try_logging = false;
 
@@ -9,6 +9,12 @@ angular.module('LoginModule')
     LoginService.NoEsPrimeraVezLogin().then(      
       function(success){        
         if(success){
+          /*
+          $ionicHistory.nextViewOptions({
+              disableAnimate: true,
+              disableBack: true
+          });
+*/
           $state.go('tab.fichada');
         }else{
           //alert("NoEsPrimeraVezLogin NOOO");

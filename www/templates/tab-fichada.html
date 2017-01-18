@@ -1,4 +1,16 @@
-	<ion-view view-title="Fichada" id="tab-fichada" hide-back-button="true">
+
+	<ion-view view-title="Fichada" id="tab-fichada">
+
+	<!--
+    <ion-nav-buttons side="left">
+        <a class="button button-clear button-icon icon ion-chevron-left" ui-sref="app.home"></a> 
+        <button class="button button-icon icon ion-grid" ng-click="vm.goToScheduleAgenda()"></button>       
+    </ion-nav-buttons>
+    -->
+    <ion-nav-buttons side="right">     
+    	<div>{{usuario}}</div>   
+        <button class="button button-icon icon ion-log-out" ng-click="logout()"></button>        
+    </ion-nav-buttons>
 
 		<ion-content class="padding">
 		<div class="text-center icono-posicion" ng-click="buscar_posicion()">
@@ -6,23 +18,7 @@
 			<ion-spinner icon="ripple" class="spinner-assertive icono-posicion" ng-show="buscando"></ion-spinner>
 		</div>
 
-		<div class="list list-inset">
-          <label class="item item-input">
-              <input type="text" placeholder="Latitud1" ng-model="data1.lat">
-          </label>
-          <label class="item item-input">
-              <input type="text" placeholder="Longitud1" ng-model="data1.lng">
-          </label>
-      	</div>
-			
-		<div class="list list-inset">
-          <label class="item item-input">
-              <input type="text" placeholder="CasaLatitud2" ng-model="data2.lat">
-          </label>
-          <label class="item item-input">
-              <input type="text" placeholder="CasaLongitud2" ng-model="data2.lng">
-          </label>
-      	</div>
+
 	</ion-content>
 		
 

@@ -44,7 +44,7 @@ angular.module('dbLoginService', ['LoginModel'])
 
   loginService.LimpiarDatos = function(){
     window.localStorage.removeItem('user');
-    alert("limpado login ok");
+    //alert("limpado login ok");
   }
 
 

@@ -27,8 +27,7 @@ angular.module('FichadaModule')
   $scope.edit_mapa = function(lugar){
     $state.go('lugar-edit', { 'lat': lugar.Latitud, 'lng': lugar.Longitud, 'descripcion':lugar.Descripcion });
   }
-  $scope.mostrar_mapa = function(lugar){    
-    alert("lugar.lat:"+lugar.Latitud);
+  $scope.mostrar_mapa = function(lugar){
     $state.go('tab.fichada-lugares-mapa', { 'lat': lugar.Latitud, 'lng': lugar.Longitud, 'descripcion': lugar.Descripcion });
   };
 
@@ -50,6 +49,15 @@ angular.module('FichadaModule')
   }
 
   $scope.fichar = function(id){
+    if(!LoginService.UserLogin ){
+
+      $ionicPopup.alert({
+        title: "Fichar", 
+        template: "No se puede obtener el usuario actual"
+      });
+      return;
+    }
+    
     //alert("id:"+id);
     // Setup the loader
     $ionicLoading.show({

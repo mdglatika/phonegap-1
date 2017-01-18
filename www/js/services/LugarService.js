@@ -31,7 +31,7 @@ angular.module('dbLugarService', ['LugarModel'])
                       //alert("getLugar  OK " + data);
                       //alert("getLugar  OK " + data[0].Direccion);
                       lugarService.lugares = Lugar.buildAll(data);
-                      console.log(lugarService.lugares);
+                      //console.log(lugarService.lugares);
                       deferred.resolve(lugarService.lugares);
 
                   }).
@@ -48,14 +48,14 @@ angular.module('dbLugarService', ['LugarModel'])
 	lugarService.getLugaresCercanos = function(lat,lng){
     //var slat, slng;
 		var deferred = $q.defer();
-    alert(url_lugares + '?latitud='+lat+'&longitud='+lng);
+    //alert(url_lugares + '?latitud='+lat+'&longitud='+lng);
 		$http.get( url_lugares + '?latitud='+lat+'&longitud='+lng).
                   success(function (data) {
-                      console.log(data);
+                      //console.log(data);
                       //alert("getLugar  OK " + data);
                       //alert("getLugar  OK " + data[0].Direccion);
                       lugarService.lugares = Lugar.buildAll(data);
-                      console.log(lugarService.lugares);
+                      //console.log(lugarService.lugares);
                       deferred.resolve(lugarService.lugares);
 
                   }).
