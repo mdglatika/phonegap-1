@@ -39,3 +39,111 @@
   stroke: #444;
   fill: #444;
 }
+
+.button.button-calm {
+    border-color: transparent;
+    background-color: #8BC34A;
+    color: #fff;
+    margin-left: 10px;
+    width: 94%;
+}
+.button.button-calm.active, .button.button-calm.activated {
+      border-color: #a2a2a2;
+      background-color: #a2a2a2; 
+}
+	  
+.bar.bar-light .title {
+    color: #9e9e9e;
+	font-size: 15px;
+}
+.desarrollo {
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+}
+.usuario {
+    position: absolute;
+    top: 35px;
+    width: 100%;
+    color: #4c5052;
+    background: #f1f1f1;
+    font-size: 12px;
+    padding: 3px;
+}
+.check {
+    position: relative;
+    top: 50px;
+    color: #8BC34A;
+}
+.has-header {
+    top: 43px;
+}
+.logo {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.item-content {
+	background: rgba(158, 158, 158, 0.16) !important;
+   /* background: rgba(139, 195, 74, 0.21);*/
+}
+.miposicion {
+    background: rgb(224, 254, 189);
+}
+.item-divider {
+    padding-top: 25px;
+}
+.button.button-positive {
+    border-color: transparent;
+    background-color: #8BC34A;
+    color: #fff;
+}
+.button.button-positive.active, .button.button-positive.activated {
+      border-color: #a2a2a2;
+      background-color: #a2a2a2; 
+}
+.button.button-balanced {
+    border-color: transparent;
+    background-color: #8BC34A;
+    color: #fff;
+}
+.bar-light .button {
+    border-color: #fff;
+    background-color: white;
+    color: #444;
+}
+h5, .h5 {
+    font-size: 14px;
+    background: rgb(139, 195, 74);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+	margin-bottom:0px;
+	margin-top:0px;
+}
+.toggle input:checked + .track .handle {
+    background-color: #fff !important;
+}
+
+/* FOOTER */
+.tabs {
+    height: 82px !important;
+	background-color: #f2f2f2;
+}
+
+.tab-item {
+    font-size: 11px;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: #464646;
+}
+.toggle.toggle-calm input:checked + .track {
+    border-color: #8BC34A;
+    background-color: #8BC34A;
+}
+
+button.hola123 {
+    font-size: 12px !important;
+    width: 35px;
+
+}

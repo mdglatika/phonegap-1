@@ -1,4 +1,4 @@
-<ion-view view-title="Lugares" id="tab-fichada-lugares" ng-init="init_view()" >
+<ion-view view-title="Clientes" id="tab-fichada-lugares" ng-init="init_view()" >
 	<ion-content>
 		<!--<h4  class="padding-top text-center">Latitud: {{latitud}} - Longitud: {{longitud}}</h4>-->
 			<div class="text-center padding-top" >
@@ -6,10 +6,10 @@
 			</div>
 
 			<ion-list ng-show="!cargando">			  
-				<ion-item class="item-icon-right" ng-click="mostrar_mi_posicion()">		
-					<i class="icon ion-ios-arrow-right"></i>
-					<h2>Mi posicion</h2>
-					<p>Latitud: {{latitud}} - Longitud: {{longitud}}</p>
+				<ion-item class="item-icon-right miposicion" ng-click="mostrar_mi_posicion()" style="margin-top: -10px;">		
+					<i class="icon ion-android-map"></i>
+					<h2>Mi posición</h2>
+					<p><strong>Latitud:</strong> {{latitud}} - <strong>Longitud:</strong> {{longitud}}</p>
 	    		  <ion-option-button class="button button-balanced icon-left ion-map" ng-click="mostrar_mi_posicion()" > 
 					Google Maps </ion-option-button>
 
@@ -18,16 +18,18 @@
 				    Estoy en ...
 				</div>
 				<ion-item ng-repeat="lugar in lugares" ng-click="fichar({{lugar.Id}})" class="item-icon-right">		
-					<i class="icon ion-ios-arrow-right"></i>
+					<i class="icon ion-android-checkmark-circle"></i>
 					<h2>{{lugar.Nombre}}</h2>
 					<p>{{lugar.Direccion}}</p>
 					<ion-option-button class="button button-balanced icon-left ion-map" 
 					ng-click="mostrar_mapa(lugar)" > 
-					Google Maps </ion-option-button>
+					Mapa </ion-option-button>
 
-					<ion-option-button class="button button-assertive icon-left ion-map" 
+					<!--
+                    <ion-option-button class="button button-assertive icon-left ion-map" 
 					ng-click="edit_mapa(lugar)" > 
 					Edit </ion-option-button>
+                    -->
 				</ion-item>
 
 			</ion-list>		

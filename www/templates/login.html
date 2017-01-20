@@ -1,31 +1,41 @@
-<ion-nav-bar class="bar bar-dark">
+<!--
+<ion-nav-bar class="bar bar-light">
     <ion-nav-title>
       Login
     </ion-nav-title>
 </ion-nav-bar>
-
+-->
 
 <ion-view view-title="Login" id="login-view" ng-init="init_view()">
  
   <ion-content class="padding-top has-header">
   
-      <div class="list list-inset">
+      <div class="list list-inset" style="text-align: center;">
           <!--
           <label class="item item-input">
               <input type="text" placeholder="Url ws" ng-model="data.url_ws">
           </label>
           -->
+          <br/>
+          <img src="img/logo.png" width="150" height="150" alt="CheckPoint" class="logo"/>
+          <br/>
+          <br/>
           <label class="item item-input">
               <input type="text" placeholder="Username" ng-model="data.username">
           </label>
+          <br/>
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="data.password">
           </label>          
       </div>
-      <button ng-disabled="!data.username || !data.password"  class="button button-block button-calm" ng-click="login()">Login</button>
+      <button ng-disabled="!data.username || !data.password"  class="button button-block button-calm" ng-click="login()">Ingresar</button>
       <div class="text-center" >
         <ion-spinner  icon="spiral" ng-show="try_logging" ></ion-spinner>          
       </div>
+      <br/>
+      <br/>
+      <p class="desarrollo">Desarrollado por <a href="http://www.latikait.com" class="desarrollo">Latika IT</a></p>
+      <br/>
 
   </ion-content>
 </ion-view>

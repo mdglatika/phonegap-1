@@ -8,10 +8,6 @@ angular.module('FichadaModule')
   $scope.usuario = "" + LoginService.UserLogin.UserName;
   $scope.buscando = false;
 
-  $scope.logout = function(){
-    LoginService.LimpiarDatos();
-    $state.go("login");
-  }
 
   $scope.buscar_posicion = function(){
     //$ionicLoading.show();

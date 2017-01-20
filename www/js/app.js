@@ -23,7 +23,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'Ficha
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  
+  $ionicConfigProvider.tabs.position('bottom');
+  //$ionicConfigProvider.backButton.previousTitleText(false).text('');
+  $ionicConfigProvider.navBar.alignTitle("center");
+  $ionicConfigProvider.backButton.previousTitleText(false).text('').icon('ion-chevron-left');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -52,7 +57,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'Ficha
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html', 
+    controller: 'TabsCtrl'
   })
 
 

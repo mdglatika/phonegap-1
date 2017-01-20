@@ -41,8 +41,8 @@ angular.module('LoginModule')
               $state.go('tab.fichada');
             }else{
               $ionicPopup.alert({
-                title: "Login NOOO ok", 
-                template: "user:mds, pass:mds"
+                title: "Incorrecto", 
+                template: "Vuelva a intentar"
               });
             }
 

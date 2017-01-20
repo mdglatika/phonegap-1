@@ -72,8 +72,8 @@ angular.module('FichadaModule')
 
     FicharService.Fichar(fichar).then(function(){
       $ionicPopup.alert({
-        title: "Fichar", 
-        template: "Guardado el fichado para " + $filter("filter")($scope.lugares, {Id:id})[0].Nombre
+        title: "Check", 
+        template: "Check In/Out en " + $filter("filter")($scope.lugares, {Id:id})[0].Nombre
       });
       $ionicLoading.hide();
       //console.log($filter("filter")($scope.lugares, {id:id}));

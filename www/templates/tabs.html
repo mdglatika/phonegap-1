@@ -2,9 +2,17 @@
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar bar-header bar-dark">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+    <ion-nav-bar class="bar bar-header bar-light">
+      <!--<ion-nav-back-button class="hola123"></ion-nav-back-button>-->
+      <ion-nav-buttons side="left">     
+      <!-- <div>A{{usuario}}</div>   -->
+        <button class="button button-sm-icon icon ion-chevron-left" ng-click="back()"></button>        
+    </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">     
+    	<!-- <div>A{{usuario}}</div>   -->
+        <button class="button button-sm-icon icon ion-log-out" ng-click="logout()"></button>        
+  	</ion-nav-buttons>
       
     </ion-nav-bar>
 
@@ -13,9 +21,10 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
-
-  <ion-tab title="Fichaje" icon-off="ion-ios-location-outline" icon-on="ion-ios-location" href="#/tab/fichaje">
+<div>
+<!--<ion-tabs class="tabs-icon-bottom tabs-color-active-positive">-->
+<ion-tabs>
+  <ion-tab title="CHECK" icon-off="ion-android-radio-button-off" icon-on="ion-android-checkmark-circle" href="#/tab/fichaje">
     <ion-nav-view name="tab-fichada"></ion-nav-view>
   </ion-tab>
 
@@ -29,9 +38,10 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-chats"></ion-nav-view>
   </ion-tab>
 -->
-  <ion-tab title="Config" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/config">
+  <ion-tab title="CONFIG" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/config">
     <ion-nav-view name="tab-config"></ion-nav-view>
   </ion-tab>
 
 
 </ion-tabs>
+</div>

@@ -1,20 +1,23 @@
 
-	<ion-view view-title="Fichada" id="tab-fichada">
+	<ion-view view-title="Check IN / OUT" id="tab-fichada">
 
 	<!--
     <ion-nav-buttons side="left">
         <a class="button button-clear button-icon icon ion-chevron-left" ui-sref="app.home"></a> 
         <button class="button button-icon icon ion-grid" ng-click="vm.goToScheduleAgenda()"></button>       
     </ion-nav-buttons>
-    -->
+    
     <ion-nav-buttons side="right">     
-    	<div>{{usuario}}</div>   
+    	<!-- <div>A{{usuario}}</div>  
         <button class="button button-icon icon ion-log-out" ng-click="logout()"></button>        
     </ion-nav-buttons>
-
+	-->	 
 		<ion-content class="padding">
 		<div class="text-center icono-posicion" ng-click="buscar_posicion()">
-			<i class="icon ion-ios-location" ng-show="!buscando"></i>
+			<div class="usuario"><m style="color:#8BC34A">USUARIO: </m> {{usuario}}</div>
+            
+            <i class="icon ion-android-checkmark-circle check" ng-show="!buscando"></i>
+            <!--<i class="icon ion-ios-location" ng-show="!buscando"></i>-->
 			<ion-spinner icon="ripple" class="spinner-assertive icono-posicion" ng-show="buscando"></ion-spinner>
 		</div>
 
