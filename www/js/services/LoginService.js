@@ -2,9 +2,11 @@ angular.module('dbLoginService', ['LoginModel'])
 
 .factory('LoginService', function($http, $q){
 	var url = "http://200.69.217.157:20123/api/Login"
-
+  //var url = "http://localhost:52416/api/Login"
+  
+  
 	var loginService = {}
-  loginService.UserLogin = { "UserName": "", "Password": "" }
+  loginService.UserLogin = { }
 
 	loginService.Login = function(login){
 		var deferred = $q.defer();
@@ -19,15 +21,18 @@ angular.module('dbLoginService', ['LoginModel'])
     $http.post( url, login).
           then(function (data, status, headers, config){
              //console.log(data);
+             //alert(data.data.Codigo);
+             //alert(data.data.Codigo == 200);
+             //alert(data.data.Descripcion);
              //console.log(data.data);             
-            if(data.data){
+            if(data.data.Codigo == 200){
               //alert("POST dbLoginService OK " + data.data.UserName);
-              guardar(data.data);              
+              guardar(data.data.Respuesta);              
             }
-            deferred.resolve(data.data);
+            deferred.resolve(data.data.Respuesta);
           },
           function (data, status, headers, config) { 
-            alert("post dbLoginService error") ;
+            //alert("post dbLoginService error") ;
             deferred.reject();
           });
         return deferred.promise;
@@ -46,7 +51,7 @@ angular.module('dbLoginService', ['LoginModel'])
     window.localStorage.removeItem('user');
     //alert("limpado login ok");
   }
-
+  //loginService.LimpiarDatos();
 
 	return loginService;
 

@@ -5,6 +5,8 @@ angular.module('ConfigModel', [])
 	function Config(Autologin, Url ){
 		this.Autologin = Autologin;
 		this.Url = Url;
+
+		
 	}
 
 	Config.getDefault = function() {

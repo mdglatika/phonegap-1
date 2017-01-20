@@ -6,7 +6,8 @@ angular.module('LoginModule')
   $scope.try_logging = false;
 
   $scope.init_view = function(){
-    LoginService.NoEsPrimeraVezLogin().then(      
+    $scope.try_logging = true;
+    LoginService.NoEsPrimeraVezLogin().then(        
       function(success){        
         if(success){
           /*
@@ -15,13 +16,17 @@ angular.module('LoginModule')
               disableBack: true
           });
 */
+          $scope.try_logging = false;
           $state.go('tab.fichada');
         }else{
           //alert("NoEsPrimeraVezLogin NOOO");
+            $scope.try_logging = false;
         }
       }, 
       function(error){
-        alert("ERRRRRRRRRRRRR");
+        //alert("Error Login");
+        $scope.try_logging = false;
+
       }
       );
 
@@ -50,8 +55,8 @@ angular.module('LoginModule')
           }, 
           function(error){
             $ionicPopup.alert({
-              title: "Login ERROR URL NOOO ok", 
-              template: "userdddddddddddddddddddddddddddddddddd"
+              title: "Eror Login", 
+              template: "Verifique el server"
             });
             $scope.try_logging = false;
           }

@@ -7,7 +7,12 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'FichadaModule', 'starter.services', 'ngCordova', 'ConfigModule'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $http) {
+
+  var token = btoa("__LatikaIT_433017$__");
+  $http.defaults.headers.common['Token'] = 'Basic ' + token;
+
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -29,6 +34,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'LoginModule', 'Ficha
   //$ionicConfigProvider.backButton.previousTitleText(false).text('');
   $ionicConfigProvider.navBar.alignTitle("center");
   $ionicConfigProvider.backButton.previousTitleText(false).text('').icon('ion-chevron-left');
+
+  
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
