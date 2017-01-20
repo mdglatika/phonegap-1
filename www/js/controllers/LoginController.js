@@ -1,12 +1,20 @@
 angular.module('LoginModule')
 
 
-.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http, LoginService, $ionicHistory){
+.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http, LoginService, $ionicHistory, $ionicLoading){
   $scope.data = {};
-  $scope.try_logging = false;
+  //$scope.try_logging = false;
 
   $scope.init_view = function(){
-    $scope.try_logging = true;
+    //$scope.try_logging = true;
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+
     LoginService.NoEsPrimeraVezLogin().then(        
       function(success){        
         if(success){
@@ -16,16 +24,21 @@ angular.module('LoginModule')
               disableBack: true
           });
 */
-          $scope.try_logging = false;
+          //$scope.try_logging = false;
+          $ionicLoading.hide();
+
           $state.go('tab.fichada');
         }else{
           //alert("NoEsPrimeraVezLogin NOOO");
-            $scope.try_logging = false;
+            //$scope.try_logging = false;
+            $ionicLoading.hide();
+
         }
       }, 
       function(error){
         //alert("Error Login");
-        $scope.try_logging = false;
+        //$scope.try_logging = false;
+        $ionicLoading.hide();
 
       }
       );
@@ -35,7 +48,15 @@ angular.module('LoginModule')
 
 
   $scope.login = function(){
-    $scope.try_logging = true;
+    //$scope.try_logging = true;
+
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
 
     var user = {UserName: $scope.data.username, Password: $scope.data.password};
       //alert("login:"+$scope.data.username + " pwd:" + $scope.data.password);        
@@ -51,14 +72,18 @@ angular.module('LoginModule')
               });
             }
 
-          $scope.try_logging = false;
+          //$scope.try_logging = false;
+          $ionicLoading.hide();
+
           }, 
           function(error){
             $ionicPopup.alert({
               title: "Eror Login", 
               template: "Verifique el server"
-            });
-            $scope.try_logging = false;
+          });
+          //$scope.try_logging = false;
+          $ionicLoading.hide();
+
           }
         );
     }
